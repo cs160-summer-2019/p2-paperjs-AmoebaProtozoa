@@ -57,17 +57,30 @@
 
 			// your rectangle gradient interaction goes in this function
 			// you may also add code outside of the function (e.g., global variables)
+      
 			function myGradientInteraction(){
+        
+        //demo box
+        var rect = new paper.Path.Rectangle({
+          center: paper.view.center,
+          size: [300, 150],
+          fillColor: 'red'
+        });
+        
 				var tool = new paper.Tool();
 
 				tool.onMouseDown = function (event) {
-
+        
 				}
 
 				tool.onMouseUp = function (event) {
-					
+				  rect.fillColor = new paper.Color({
+            stops: cp.history.slice(-2),
+            origin: event.downPoint,
+            destination: event.point
+          })
 				}
-			}
+			};
 
 			// your custom interaction goes here!
 			// you may replace everything
